@@ -9,13 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup node
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: ./codebase/rdicidr-0.1.0/package-lock.json
+        node-version: '17'
+       #cache: 'npm'
+       #cache-dependency-path: ./codebase/rdicidr-0.1.0/package-lock.json
     - run: npm install
     - run: npm run lint
     - run: npm run prettier
