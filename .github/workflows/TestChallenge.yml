@@ -40,4 +40,6 @@ jobs:
       
     - name: Static Server Install
       run: npm install -g serve
-           serve -s build
+           
+    - name: Static Server Build
+      run: serve -s build       
