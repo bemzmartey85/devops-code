@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactappdeplpyment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactapp1
+  template:
+    metadata:
+      name: reactappPod
+      labels:
+        app: reactapp1
+    spec:
+      containers:
+      - name: reactappcontainer
+        image: reactimage:1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MY_SECRET
+          valueFrom:
+             secretKeyRef:
+               name: my-secret-value 
+               key: secret-value

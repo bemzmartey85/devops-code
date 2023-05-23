@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: fsl.challenge.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: / 
+        backend:
+          service:
+            name: reactapp1
+            port:
+              number: 8080
